@@ -14,4 +14,10 @@ public class Trainee implements TraineeService{
 		return traineeRepo.add(trainee);
 	}
 
+
+
+	public String retrieveTrainee(int id) {
+		return traineeRepo.retrieve(id);
+	}
+
 }
