@@ -13,9 +13,12 @@ public class Classroom implements ClassroomService {
 		return classroomRepo.add(classroom);
 	}
 
-
 	public String retrieveClassroom(int id) {
 		return classroomRepo.retrieve(id);
+	}
+
+	public String retrieveAllClassroom() {
+		return classroomRepo.retrieveAll();
 	}
 
 }

@@ -27,4 +27,12 @@ public class ClassroomEndpoint {
 	public String retrieveClassroom(@PathParam("id") int id) {
 		return classroomService.retrieveClassroom(id);
 	}
+	
+	@GET
+	@Path("/retrieveAllClassroom")
+	@Produces({"application/json"})
+	public String retrieveAllClassroom() {
+		return classroomService.retrieveAllClassroom();
+	}
+	
 }

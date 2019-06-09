@@ -1,10 +1,14 @@
 package com.qa.persistance.Repository;
 
+import java.util.Collection;
+
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.transaction.Transactional;
 import javax.transaction.Transactional.TxType;
+
 
 import com.qa.Business.Classroom;
 import com.qa.Utility.JSONUtil;
@@ -28,5 +32,13 @@ public class ClassroomDatabase implements ClassroomRepository {
 		return util.getJSONForObject(manager.find(Classroom.class, id));
 
 	}
+
+	public String retrieveAll() {
+		Query query = manager.createQuery("Select c FROM Classroom c");
+		Collection<Classroom> classroom = (Collection<Classroom>) query.getResultList();
+		return util.getJSONForObject(classroom);
+	}
+
+	
 
 }

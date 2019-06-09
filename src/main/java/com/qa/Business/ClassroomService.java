@@ -4,4 +4,5 @@ public interface ClassroomService {
 
 	String addClassroom(String classroom);
 	String retrieveClassroom(int id);
+	String retrieveAllClassroom();
 }
