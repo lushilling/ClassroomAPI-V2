@@ -39,6 +39,12 @@ public class ClassroomDatabase implements ClassroomRepository {
 		return util.getJSONForObject(classroom);
 	}
 
+	@Transactional(value = TxType.REQUIRED)
+	public String deleteClassroom(int id) {
+		manager.remove(manager.find(Classroom.class, id));
+		return util.returnMessage("Classroom deleted");
+	}
+
 	
 
 }

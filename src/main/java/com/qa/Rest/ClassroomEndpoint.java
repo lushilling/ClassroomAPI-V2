@@ -1,6 +1,7 @@
 package com.qa.Rest;
 
 import javax.inject.Inject;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -33,6 +34,13 @@ public class ClassroomEndpoint {
 	@Produces({"application/json"})
 	public String retrieveAllClassroom() {
 		return classroomService.retrieveAllClassroom();
+	}
+	
+	@DELETE
+	@Path("/deleteClassroom/{id}")
+	@Produces({"application/json"})
+	public String deleteClassroom(@PathParam("id") int id) {
+		return classroomService.deleteClassroom(id);
 	}
 	
 }

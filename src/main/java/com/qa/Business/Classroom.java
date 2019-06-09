@@ -21,4 +21,10 @@ public class Classroom implements ClassroomService {
 		return classroomRepo.retrieveAll();
 	}
 
+	@Override
+	public String deleteClassroom(int id) {
+		return classroomRepo.deleteClassroom(id);
+		
+	}
+
 }
