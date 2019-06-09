@@ -6,4 +6,5 @@ public interface TraineeRepository {
 	String retrieve(int id);
 	String retrieveAll();
 	String deleteTrainee(int id);
+	String amendTrainee(int id, String Trainee);
 }

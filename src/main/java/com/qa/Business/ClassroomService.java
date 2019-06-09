@@ -6,4 +6,5 @@ public interface ClassroomService {
 	String retrieveClassroom(int id);
 	String retrieveAllClassroom();
 	String deleteClassroom(int id);
+	String amendClassroom(int id, String classroom);
 }
