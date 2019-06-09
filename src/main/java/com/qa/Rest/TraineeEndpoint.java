@@ -28,5 +28,10 @@ public class TraineeEndpoint {
 		return traineeService.retrieveTrainee(id);
 	}
 	
-	
+	@GET
+	@Path("/retrieveAllTrainees")
+	@Produces({"application/json"})
+	public String retrieveAllTrainees() {
+		return traineeService.retrieveAllTrainees();
+	}
 }

@@ -1,8 +1,11 @@
 package com.qa.persistance.Repository;
 
+import java.util.Collection;
+
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.transaction.Transactional;
 import javax.transaction.Transactional.TxType;
 
@@ -27,6 +30,13 @@ public class TraineeDatabase implements TraineeRepository {
 
 	public String retrieve(int id) {
 		return util.getJSONForObject(manager.find(Trainee.class, id));
+	}
+
+	public String retrieveAll() {
+		Query query = manager.createQuery("Select t FROM Trainee t");
+		Collection<Trainee> trainee = (Collection<Trainee>) query.getResultList();
+		return util.getJSONForObject(trainee);
+		
 	}
 
 }
