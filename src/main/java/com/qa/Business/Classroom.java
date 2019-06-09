@@ -7,11 +7,10 @@ import com.qa.persistance.Repository.ClassroomRepository;
 public class Classroom implements ClassroomService {
 
 	@Inject
-	ClassroomRepository classroomRepository;
+	ClassroomRepository classroomRepo;
 
 	public String addClassroom(String classroom) {
-		//return classroomRepository.add(classroom);
-		return null;
+		return classroomRepo.add(classroom);
 	}
 
 }
