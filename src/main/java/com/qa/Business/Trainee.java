@@ -21,10 +21,13 @@ public class Trainee implements TraineeService {
 		return traineeRepo.retrieveAll();
 	}
 
-	@Override
 	public String deleteTrainee(int id) {
 		return traineeRepo.deleteTrainee(id);
 		
+	}
+
+	public String amendTrainee(int id, String trainee) {
+		return traineeRepo.amendTrainee(id, trainee);
 	}
 
 }

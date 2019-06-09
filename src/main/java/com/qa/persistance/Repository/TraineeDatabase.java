@@ -9,7 +9,7 @@ import javax.persistence.Query;
 import javax.transaction.Transactional;
 import javax.transaction.Transactional.TxType;
 
-import com.qa.Business.Trainee;
+import com.qa.persitance.Domain.*;
 import com.qa.Utility.JSONUtil;
 
 @Transactional(value = TxType.SUPPORTS)
@@ -36,12 +36,22 @@ public class TraineeDatabase implements TraineeRepository {
 		Query query = manager.createQuery("Select t FROM Trainee t");
 		Collection<Trainee> trainee = (Collection<Trainee>) query.getResultList();
 		return util.getJSONForObject(trainee);
-		
+
 	}
 
+	@Transactional(value = TxType.REQUIRED)
 	public String deleteTrainee(int id) {
 		manager.remove(manager.find(Trainee.class, id));
 		return util.returnMessage("Trainee deleted");
+	}
+
+	@Transactional(value = TxType.REQUIRED)
+	public String amendTrainee(int id, String trainee) {
+		Trainee updatedTrainee = util.getObjectForJSON(trainee, Trainee.class);
+		Trainee oldTrainee = manager.find(Trainee.class, id);
+		oldTrainee.setName(updatedTrainee.getName());
+		manager.persist(oldTrainee);
+		return util.returnMessage("Trainee updated");
 	}
 
 }

@@ -6,4 +6,5 @@ public interface ClassroomRepository {
 	String retrieve(int id);
 	String retrieveAll();
 	String deleteClassroom(int id);
+	String amendClassroom(int id, String Classroom);
 }

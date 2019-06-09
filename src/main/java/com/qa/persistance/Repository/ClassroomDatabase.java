@@ -10,8 +10,9 @@ import javax.transaction.Transactional;
 import javax.transaction.Transactional.TxType;
 
 
-import com.qa.Business.Classroom;
+import com.qa.persitance.Domain.*;
 import com.qa.Utility.JSONUtil;
+import com.qa.persitance.Domain.Trainee;
 
 @Transactional(value = TxType.SUPPORTS)
 public class ClassroomDatabase implements ClassroomRepository {
@@ -43,6 +44,15 @@ public class ClassroomDatabase implements ClassroomRepository {
 	public String deleteClassroom(int id) {
 		manager.remove(manager.find(Classroom.class, id));
 		return util.returnMessage("Classroom deleted");
+	}
+
+	@Transactional(value = TxType.REQUIRED)
+	public String amendClassroom(int id, String classroom) {
+		Classroom updatedClassroom = util.getObjectForJSON(classroom, Classroom.class);
+		Classroom oldClassroom = manager.find(Classroom.class, id);
+		oldClassroom.setName(updatedClassroom.getName());
+		manager.persist(oldClassroom);
+		return util.returnMessage("Classroom updated");
 	}
 
 	
