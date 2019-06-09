@@ -39,4 +39,9 @@ public class TraineeDatabase implements TraineeRepository {
 		
 	}
 
+	public String deleteTrainee(int id) {
+		manager.remove(manager.find(Trainee.class, id));
+		return util.returnMessage("Trainee deleted");
+	}
+
 }
