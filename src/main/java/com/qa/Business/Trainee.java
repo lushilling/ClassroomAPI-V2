@@ -7,12 +7,11 @@ import com.qa.persistance.Repository.TraineeRepository;
 public class Trainee implements TraineeService{
 
 	@Inject 
-	TraineeRepository traineeRepository;
+	TraineeRepository traineeRepo;
 	
 	
 	public String addTrainee(String trainee) {
-		//return traineeRepository.add(trainee);
-		return null;
+		return traineeRepo.add(trainee);
 	}
 
 }
