@@ -15,7 +15,7 @@ import com.qa.Utility.JSONUtil;
 @Transactional(value = TxType.SUPPORTS)
 public class TraineeDatabase implements TraineeRepository {
 
-	@PersistenceContext(unitName = "myPu")
+	@PersistenceContext(unitName = "myPU")
 	private EntityManager manager;
 
 	@Inject
